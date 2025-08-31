@@ -8,6 +8,7 @@ import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
+import UserProfile from './components/UserProfile.jsx'  // ✅ Added this
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,6 +38,13 @@ function App() {
 
       {/* Task 1 component */}
       <WelcomeMessage />
+
+      {/* Task 2 component */}
+      <UserProfile 
+        name="Alice" 
+        age="25" 
+        bio="Loves hiking and photography" 
+      />
 
       {/* Task 2 components */}
       <Header />
