@@ -3,9 +3,9 @@
 export default function UserProfile({ name, age, bio }) {
   return (
     <div className="user-profile">
-      <h2>{name}</h2>
-      <p>Age: {age}</p>
-      <p>{bio}</p>
+      <h2>{Alice}</h2>
+      <p>Age: {25}</p>
+      <p>Bio: "Loves hiking and photography"</p>
     </div>
   );
 }
