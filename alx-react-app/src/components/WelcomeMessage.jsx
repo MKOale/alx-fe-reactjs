@@ -1,5 +1,11 @@
 function WelcomeMessage() {
-  return <h1>Welcome to my first React App!</h1>;
+  return (
+    <div>
+      <h1>Hello everyone, I am learning React at ALX!</h1>
+      <p>This is a simple JSX component.</p>
+      <p>I am learning about JSX!</p>
+    </div>
+  );
 }
 
 export default WelcomeMessage;
