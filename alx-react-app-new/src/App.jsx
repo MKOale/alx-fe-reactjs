@@ -43,7 +43,7 @@ function App() {
       </p>
 
       {/* Task 1 component */}
-      <WelcomeMessage />
+      <WelcomeMessage message="Welcome to my React application!" />
 
       {/* Task 2 component with inline styling */}
       <UserProfile 
