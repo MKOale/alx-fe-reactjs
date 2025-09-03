@@ -1,5 +1,4 @@
-// src/UserInfo.jsx
-import UserDetails from './UserProfile';
+import UserDetails from "./UserDetails.jsx";
 
 function UserInfo() {
   return <UserDetails />;
