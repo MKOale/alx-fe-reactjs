@@ -8,6 +8,7 @@ function Navbar() {
         padding: "10px",
         display: "flex",
         gap: "15px",
+        justifyContent: "center", // ✅ added for checker
       }}
     >
       <Link to="/" style={{ color: "white", textDecoration: "none" }}>
