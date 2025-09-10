@@ -1,23 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RecipeList from "./components/RecipeList";
-import AddRecipeForm from "./components/AddRecipeForm";
-import RecipeDetails from "./components/RecipeDetails";
-import SearchBar from "./components/SearchBar";
+import React, { useEffect } from 'react';
+import { Home } from './components/Home';
+import { useRecipeStore } from './components/recipeStore';
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <h1>Recipe Sharing App</h1>
-        <SearchBar />
+  const setRecipes = useRecipeStore(state => state.setRecipes);
 
-        <Routes>
-          <Route path="/" element={<RecipeList />} />
-          <Route path="/add" element={<AddRecipeForm />} />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-        </Routes>
-      </div>
-    </Router>
+  // Mock recipes (for testing without backend)
+  useEffect(() => {
+    const mockRecipes = [
+      { id: 1, title: "Jollof Rice", description: "Classic West African rice dish." },
+      { id: 2, title: "Egusi Soup", description: "Melon seed soup with vegetables and meat." },
+      { id: 3, title: "Pounded Yam & Efo Riro", description: "Smooth pounded yam served with rich spinach stew." },
+      { id: 4, title: "Ofada Stew", description: "Local Nigerian stew with assorted meats." },
+    ];
+
+    setRecipes(mockRecipes);
+  }, [setRecipes]);
+
+  return (
+    <div>
+      <Home />
+    </div>
   );
 }
 
