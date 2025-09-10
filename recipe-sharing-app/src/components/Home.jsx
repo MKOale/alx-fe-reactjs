@@ -1,4 +1,4 @@
-import { FavoritesList } from './FavoritesList';
+import FavoritesList from './FavoritesList';  // 👈 no curly braces now
 import { RecommendationsList } from './RecommendationsList';
 import { RecipeCard } from './RecipeCard';
 import { useRecipeStore } from './recipeStore';
