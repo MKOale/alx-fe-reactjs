@@ -1,21 +1,22 @@
-// src/components/RecipeDetails.jsx
-import { useRecipeStore } from './recipeStore';
+import { useParams } from "react-router-dom";
+import useRecipeStore from "./recipeStore";
 
-const RecipeDetails = ({ recipeId }) => {
-  const recipe = useRecipeStore(state =>
-    state.recipes.find(recipe => recipe.id === recipeId)
+const RecipeDetail = () => {
+  const { id } = useParams();
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((r) => r.id === Number(id))
   );
 
   if (!recipe) {
-    return <p>Recipe not found</p>;
+    return <h2>Recipe not found</h2>;
   }
 
   return (
     <div>
-      <h1>{recipe.title}</h1>
+      <h2>{recipe.title}</h2>
       <p>{recipe.description}</p>
     </div>
   );
 };
 
-export default RecipeDetails;
+export default RecipeDetail;
