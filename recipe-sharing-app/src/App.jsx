@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { Home } from './components/Home';
-import { useRecipeStore } from './components/recipeStore';
+import React, { useEffect } from "react";
+import { useRecipeStore } from "./components/recipeStore";
+import AddRecipeForm from "./components/AddRecipeForm";
+import RecipeList from "./components/RecipeList";
 
 function App() {
-  const setRecipes = useRecipeStore(state => state.setRecipes);
+  const setRecipes = useRecipeStore((state) => state.setRecipes);
 
   // Mock recipes (for testing without backend)
   useEffect(() => {
@@ -19,7 +20,9 @@ function App() {
 
   return (
     <div>
-      <Home />
+      <h1>Recipe Sharing App</h1>
+      <AddRecipeForm />
+      <RecipeList />
     </div>
   );
 }
