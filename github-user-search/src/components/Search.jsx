@@ -22,7 +22,7 @@ function Search() {
       setResults([user]);
       setTotalCount(1);
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,7 @@ function Search() {
       setResults(data.items);
       setTotalCount(data.total_count);
     } catch (err) {
-      setError("Looks like we can't find users with the specified criteria");
+      setError("Looks like we cant find users with the specified criteria");
     } finally {
       setLoading(false);
     }
@@ -103,7 +103,7 @@ function Search() {
 
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-
+{user && (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {results.map((user) => (
           <div key={user.id} className="border p-4 rounded shadow">
