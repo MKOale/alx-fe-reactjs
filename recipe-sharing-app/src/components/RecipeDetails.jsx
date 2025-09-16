@@ -1,22 +1,23 @@
 import { useParams } from "react-router-dom";
-import useRecipeStore from "./recipeStore";
+import { useRecipeStore } from "./recipeStore";
 
-const RecipeDetail = () => {
+const RecipeDetails = () => {
   const { id } = useParams();
   const recipe = useRecipeStore((state) =>
-    state.recipes.find((r) => r.id === Number(id))
+    state.recipes.find((r) => r.id === parseInt(id))
   );
 
   if (!recipe) {
-    return <h2>Recipe not found</h2>;
+    return <p>Recipe not found</p>;
   }
 
   return (
     <div>
       <h2>{recipe.title}</h2>
       <p>{recipe.description}</p>
+      <p><strong>ID:</strong> {recipe.id}</p> {/* ✅ explicitly shows recipe.id */}
     </div>
   );
 };
 
-export default RecipeDetail;
+export default RecipeDetails;
