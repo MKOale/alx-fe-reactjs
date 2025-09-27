@@ -2,7 +2,7 @@ import React from "react";
 
 const UserProfile = ({ name, age, bio, image }) => {
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm hover:scale-110 transition-transform duration-300 ease-in-out">
+    <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm hover:scale-110 hover:shadow-xl transition-transform duration-300 ease-in-out">
       <div className="flex flex-col items-center p-6">
         <img
           className="h-32 w-32 rounded-full object-cover"
