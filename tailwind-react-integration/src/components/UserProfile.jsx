@@ -1,22 +1,18 @@
-import React from "react";
-
-const UserProfile = ({ name, age, bio, image }) => {
+export default function UserProfile() {
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm hover:scale-110 hover:shadow-xl transition-transform duration-300 ease-in-out">
-      <div className="flex flex-col items-center p-6">
-        <img
-          className="h-32 w-32 rounded-full object-cover"
-          src={image}
-          alt={`${name}'s profile`}
-        />
-        <h2 className="mt-4 text-xl font-semibold text-gray-800 hover:text-blue-500">
-          {name}
-        </h2>
-        <p className="text-gray-600 hover:text-blue-500">Age: {age}</p>
-        <p className="mt-2 text-gray-600 hover:text-blue-500">{bio}</p>
-      </div>
+    <div className="bg-white rounded-xl shadow-md sm:p-4 md:p-8 sm:max-w-xs md:max-w-sm mx-auto text-center">
+      <img
+        src="https://via.placeholder.com/150"
+        alt="Profile"
+        className="rounded-full mx-auto sm:w-24 sm:h-24 md:w-36 md:h-36 object-cover 
+                   transition-transform duration-300 ease-in-out hover:scale-110"
+      />
+      <h2 className="mt-4 font-bold sm:text-lg md:text-xl transition-colors duration-300 ease-in-out hover:text-blue-500">
+        John Doe
+      </h2>
+      <p className="text-gray-600 sm:text-sm md:text-base transition-shadow duration-300 ease-in-out hover:shadow-xl">
+        Frontend Developer
+      </p>
     </div>
   );
-};
-
-export default UserProfile;
+}
