@@ -1,42 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AddRecipeForm from "./components/AddRecipeForm";
-import RecipeList from "./components/RecipeList";
-import RecipeDetails from "./components/RecipeDetails";
-import { useRecipeStore } from "./components/recipeStore";
-
-function App() {
-  const setSearchTerm = useRecipeStore((state) => state.setSearchTerm);
-  const searchTerm = useRecipeStore((state) => state.searchTerm);
-
+export default function App() {
   return (
-    <Router>
-      <div>
-        <h1>Recipe Sharing App</h1>
-
-        {/* ✅ Search bar wired to store */}
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-        {/* Routes */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <AddRecipeForm />
-                <RecipeList />
-              </div>
-            }
-          />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600 mb-4">
+        Recipe Sharing Platform
+      </h1>
+      <p className="text-gray-700 text-lg">
+        Tailwind CSS is working perfectly! 🎉
+      </p>
+    </div>
   );
 }
-
-export default App;
