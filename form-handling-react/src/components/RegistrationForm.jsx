@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function RegistrationForm() {
+function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,54 +10,54 @@ export default function RegistrationForm() {
     e.preventDefault();
 
     if (!username || !email || !password) {
-      setError("All fields are required!");
+      setError("All fields are required");
       return;
     }
 
     setError("");
     console.log("Form submitted:", { username, email, password });
-    alert("User registered successfully!");
+    alert("Registration successful!");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
-      <h2 className="text-xl font-bold mb-4">User Registration (Controlled)</h2>
+    <form onSubmit={handleSubmit}>
+      <h2>User Registration Form</h2>
 
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="block w-full p-2 mb-2 border rounded"
-      />
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="block w-full p-2 mb-2 border rounded"
-      />
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="block w-full p-2 mb-2 border rounded"
-      />
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
 
-      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Register
-      </button>
+      <button type="submit">Register</button>
     </form>
   );
 }
+
+export default RegistrationForm;
