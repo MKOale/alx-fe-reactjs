@@ -1,23 +1,25 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const fetchPosts = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  if (!res.ok) throw new Error("Failed to fetch posts");
-  return res.json();
+  const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
+  return data;
 };
 
-export default function PostsComponent() {
+const PostsComponent = () => {
   const {
     data: posts,
     isLoading,
     isError,
     error,
     refetch,
-    isFetching,
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
-    staleTime: 5000,
+    cacheTime: 1000 * 60 * 5, // Cache data for 5 minutes
+    refetchOnWindowFocus: false, // Prevent auto refetch on window focus
+    keepPreviousData: true, // Keep old data while fetching new data
   });
 
   if (isLoading) return <p>Loading posts...</p>;
@@ -25,24 +27,18 @@ export default function PostsComponent() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Posts List</h2>
-        <button
-          onClick={() => refetch()}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          {isFetching ? "Refreshing..." : "Refetch Posts"}
-        </button>
-      </div>
-
-      <ul className="space-y-3">
-        {posts.slice(0, 10).map((post) => (
-          <li key={post.id} className="border p-3 rounded shadow-sm">
-            <h3 className="font-bold text-lg">{post.title}</h3>
-            <p className="text-gray-700">{post.body}</p>
+      <h2>React Query Posts</h2>
+      <button onClick={refetch}>Refetch Posts</button>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <strong>{post.title}</strong>
+            <p>{post.body}</p>
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
+
+export default PostsComponent;
