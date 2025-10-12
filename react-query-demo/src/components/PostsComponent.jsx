@@ -17,20 +17,21 @@ const PostsComponent = () => {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
-    cacheTime: 1000 * 60 * 5, // Cache data for 5 minutes
-    refetchOnWindowFocus: false, // Prevent auto refetch on window focus
-    keepPreviousData: true, // Keep old data while fetching new data
+    cacheTime: 1000 * 60 * 5, // Cache for 5 mins
+    staleTime: 1000 * 60 * 1, // 🔥 Stale time for 1 min
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
   });
 
   if (isLoading) return <p>Loading posts...</p>;
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h2>React Query Posts</h2>
-      <button onClick={refetch}>Refetch Posts</button>
+    <div style={{ padding: "20px" }}>
+      <h2>Posts List</h2>
+      <button onClick={() => refetch()}>Refetch Posts</button>
       <ul>
-        {posts.map((post) => (
+        {posts?.slice(0, 10).map((post) => (
           <li key={post.id}>
             <strong>{post.title}</strong>
             <p>{post.body}</p>
